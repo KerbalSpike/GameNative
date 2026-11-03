@@ -20,6 +20,7 @@ import app.gamenative.ui.theme.settingsTileColorsAlt
 import com.alorma.compose.settings.ui.SettingsGroup
 import com.alorma.compose.settings.ui.SettingsSwitch
 import com.winlator.container.Container
+import com.winlator.inputcontrols.OnScreenControlsVisibility
 import kotlin.math.roundToInt
 
 // Steam Controller (Triton) config is intentionally NOT here — it lives entirely in the in-game QuickMenu so it
@@ -34,6 +35,20 @@ fun ControllerTabContent(state: ContainerConfigState, default: Boolean) {
 
     SettingsGroup() {
         if (!default) {
+            SettingsListDropdown(
+                colors = settingsTileColors(),
+                title = { Text(stringResource(R.string.on_screen_controls_visibility)) },
+                subtitle = { Text(stringResource(R.string.on_screen_controls_visibility_description)) },
+                value = config.onScreenControlsVisibility.ordinal,
+                items = listOf(
+                    stringResource(R.string.on_screen_controls_visibility_automatic),
+                    stringResource(R.string.on_screen_controls_visibility_shown),
+                    stringResource(R.string.on_screen_controls_visibility_hidden),
+                ),
+                onItemSelected = { index ->
+                    state.config.value = config.copy(onScreenControlsVisibility = OnScreenControlsVisibility.values()[index])
+                },
+            )
             SettingsSwitch(
                 colors = settingsTileColorsAlt(),
                 title = { Text(text = stringResource(R.string.use_sdl_api)) },

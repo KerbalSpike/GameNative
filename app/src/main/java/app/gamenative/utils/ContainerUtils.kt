@@ -385,6 +385,7 @@ object ContainerUtils {
             enableDInput = enableD,
             dinputMapperType = mapperType,
             disableMouseInput = disableMouse,
+            onScreenControlsVisibility = container.onScreenControlsVisibility,
             touchscreenMode = touchscreenMode,
             shooterMode = shooterMode,
             gestureConfig = gestureConfig,
@@ -593,6 +594,7 @@ object ContainerUtils {
         container.fexCoreVersion = containerData.fexcoreVersion
         container.setFEXCorePreset(containerData.fexcorePreset)
         container.setDisableMouseInput(containerData.disableMouseInput)
+        container.onScreenControlsVisibility = containerData.onScreenControlsVisibility
         container.setTouchscreenMode(containerData.touchscreenMode)
         container.setShooterMode(containerData.shooterMode)
         container.setGestureConfig(containerData.gestureConfig)
